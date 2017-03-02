@@ -9,11 +9,11 @@ bool fexists(char *path)
 	return access(path, F_OK) == 0;
 }
 
-long fsizeof(FILE *f)
+unsigned long fsizeof(FILE *f)
 {
-	long curr = ftell(f);
+	unsigned long curr = (unsigned long) ftell(f);
 	fseek(f, 0, SEEK_END);
-	long end = ftell(f);
+	unsigned long end = (unsigned long) ftell(f);
 	fseek(f, curr, SEEK_SET);
 	return end;
 }
